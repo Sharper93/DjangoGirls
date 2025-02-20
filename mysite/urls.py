@@ -1,3 +1,5 @@
+# mysite/
+
 """
 URL configuration for mysite project.
 

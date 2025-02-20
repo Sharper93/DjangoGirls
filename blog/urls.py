@@ -1,4 +1,5 @@
-# blogs\
+# blogs/
+# blogs folder
     
 from django.urls import path
 from . import views

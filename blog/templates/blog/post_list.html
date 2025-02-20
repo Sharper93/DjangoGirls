@@ -30,6 +30,45 @@ Blog/Templates/Blog
             <h2><a href="">My second post</a></h2>
             <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
         </article>
+
+        {% if posts %} <!-- checks to see if post variable exists -->
+            {% comment %}
+            Jenga commands start with {% and wne with %}
+            {% endcomment %}
+            <div>
+
+                <table>
+
+                    <thead>
+                        <tr>
+
+                            <th>Author</th>
+                            <th>Title</th>
+                            <th>Text</th>
+                            <th>Published Date</th>
+
+                        </tr>
+                    </thead> 
+
+                    <tbody>
+                        {% for row in posts %}
+                        <tr> 
+                            <td>{{ row.author }}</td> <!--Variables in Djange have double curly {{variable}}-->
+                            <td>{{ row.title }}</td>
+                            <td>{{ row.text }}</td>
+                            <td>{{ row.published_date }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+        {% else %}
+            <div class="no posts">
+                No Posts Found
+            </div>
+        {% endif %}
     </body>
 
 </html>

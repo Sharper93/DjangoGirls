@@ -26,7 +26,8 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4 
+    {
     font-family: 'Lobster', cursive;
 }
 
@@ -76,4 +77,15 @@ h4 {
 .btn-secondary:hover {
     color: #FFFFFF;
     background-color: #C25100;
+}
+
+table, thead, tbody {padding-right: 10px;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+thead {
+    font-family: 'Lobster', cursive;
+    font-size: 16pt;
+    text-decoration: underline;
 }

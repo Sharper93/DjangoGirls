@@ -1,3 +1,5 @@
+{% extends 'blog/base.html' %}
+
 <!--Blog/Templates/Blog-->
 
 {% comment %}
@@ -8,100 +10,21 @@ Blog/Templates/Blog
 {% endcomment %}
 
 
-{% load static %}
-<!DOCTYPE html>
-<html>
 
-    <head>
-        <title>Sammi's Django Girls blog</title>
-        <!--Bootstrap CSS-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-        crossorigin="anonymous">
+{% block content %} <!-- calls block from base and replaces with the below content -->
+    {% for post in posts %}
 
-        <!--blog.css file-->
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <article class="post">
 
-        <!-- Lobster Google Font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext">
-    </head>
+            <time class="date">
+                {{ post.published_date }}
+            </time>
 
-    <body>
-        <header class="page-header">
-            <div class="container">
-                <h1><a href="/">Sammi's Django Girls Blog</a></h1>
-            </div>
-        </header>
+            <h2><a href="">{{ post.title }}</a></h2>
 
-        <main class="container">
+            <p>{{ post.text|linebreaksbr }}</p>
 
-            <div class="row">
+        </article>
 
-                <div class="col">
-
-                    {% for post in posts %}
-
-                        <article class="post">
-
-                            <time class="date">
-                                {{ post.published_date }}<!--variable {{post.published_date}}-->
-                            </time>
-
-                            <h2><a href="">{{ post.title }}</a></h2><!--variable {{post.title}}-->
-                            
-                            <p>{{ post.text|linebreaksbr }}</p><!--take text variable and send through line breaks br function - automatically puts br element tag in any line break element in code}}-->
-
-                        </article>
-
-                    {% endfor %}
-
-                </div>
-
-            </div>
-
-        
-
-        {% if posts %} <!-- checks to see if post variable exists -->
-            {% comment %}
-            Jenga commands start with {% and wne with %}
-            {% endcomment %}
-            <div>
-
-                <table>
-
-                    <thead>
-                        <tr>
-
-                            <th>Author</th>
-                            <th>Title</th>
-                            <th>Text</th>
-                            <th>Published Date</th>
-
-                        </tr>
-                    </thead> 
-
-                    <tbody>
-                        {% for row in posts %}
-                        <tr> 
-                            <td>{{ row.author }}</td> <!--Variables in Djange have double curly {{variable}}-->
-                            <td>{{ row.title }}</td>
-                            <td>{{ row.text }}</td>
-                            <td>{{ row.published_date }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-
-                </table>
-
-            </div>
-        {% else %}
-            <div class="no posts">
-                No Posts Found
-            </div>
-        {% endif %}
-
-    </main>  <!-- put main at bottom to shift table as well -->
-
-    </body>
-
-</html>
+    {% endfor %}
+{% endblock %}

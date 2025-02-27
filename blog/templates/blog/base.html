@@ -30,7 +30,14 @@ Blog/Templates/Blog
                 {% if user.is_authenticated %}
                     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                     
-                    <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+                    <p class="top-menu">Hello {{ user.username }} 
+                        <small>
+                            <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Log Out ({{ user.username }})</button>
+                            </form>
+                        </small>
+                    </p>
                 {% else %}
                     <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}

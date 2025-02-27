@@ -26,6 +26,7 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', views.LoginView.as_view(), name='login'),
+    path("accounts/", include("django.contrib.auth.urls")),
     path('accounts/logout/', views.LogoutView.as_view(), name='logout'),
     path('', include('blog.urls')), #'' empty string AKA root of system -- including blogs url from blog folder to root system. 
 ]

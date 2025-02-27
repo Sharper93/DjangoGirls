@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% comment %}
+blog/
+{% endcomment %}
+
+{% block content %}
+
+    <h2>New post</h2>
+
+    <!--there is not an action element as the form page is the target for the post-->
+    <form method="POST" class="post-form">{% csrf_token %} <!--csrd_token validates the form from our server - token creation to know it came from our server-->
+        {{ form.as_p }} <!-- display form -->
+        <button type="submit" class="save btn btn-secondary">Save</button> <!-- submit button -->
+    </form>
+
+{% endblock %}

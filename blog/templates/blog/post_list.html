@@ -20,7 +20,8 @@ Blog/Templates/Blog
                 {{ post.published_date }}
             </time>
 
-            <h2><a href="">{{ post.title }}</a></h2>
+            <!-- Uses URL template tag to link to detail view of post -->
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2> 
 
             <p>{{ post.text|linebreaksbr }}</p>
 

@@ -26,7 +26,20 @@ Blog/Templates/Blog
 
         <header class="page-header">
             <div class="container">
+
+                <a href="{% url 'post_new' %}" class="top-menu"> <1---->
+                    {% include './icons/file-earmark-plus.svg' %}
+                </a>
+
+                <!-- only will appear if logged in as admin-->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_new' %}" class="top-menu">
+                        {% include './icons/file-earmark-plus.svg' %}
+                    </a>
+                {% endif %}
+
                 <h1><a href="/">Sammi's Django Blog</a></h1>
+
             </div>
         </header>
 
